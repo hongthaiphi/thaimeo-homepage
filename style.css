@@ -1,0 +1,84 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  text-align: center;
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: #444;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 6px 16px;
+}
+
+/* Name */
+h1 {
+  font-size: clamp(3.5rem, 12vw, 7rem);
+  font-weight: 300;
+  color: #111;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Tagline */
+.tagline {
+  font-size: 1.125rem;
+  color: #888;
+  font-weight: 400;
+  max-width: 420px;
+}
+
+/* Nav buttons */
+nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #222;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+nav a:hover {
+  background: #f8f8f8;
+  border-color: #bbb;
+  transform: translateY(-1px);
+}
