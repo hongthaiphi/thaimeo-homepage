@@ -11,13 +11,24 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
+  <header>
     <div class="badge">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-      Fulltim father, partime clickOps
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <!-- dad -->
+        <circle cx="8" cy="4" r="2"/>
+        <path d="M5 21v-5H3.5l1.8-5.5A1.5 1.5 0 016.7 9.5h2.6a1.5 1.5 0 011.4 1l1.8 5.5H11v5"/>
+        <!-- kid -->
+        <circle cx="17" cy="6" r="1.5"/>
+        <path d="M14.8 21v-4H14l1.3-3.8a1.1 1.1 0 011-.7h1.4a1.1 1.1 0 011 .7L20 17h-.8v4"/>
+        <!-- holding hands -->
+        <path d="M11 14.5q2 1 3 .5"/>
+      </svg>
+      Fulltime father, part-time clickOps
     </div>
+  </header>
 
-    <h1>Phí Hồng Thái</h1>
+  <main>
+    <h1>PHI HONG THAI</h1>
 
     <p class="tagline">Thích xây dựng thứ gì đó hữu ích và học công nghệ mới.</p>
 
@@ -34,11 +45,27 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
         Mountain Blog
       </a>
-      <a href="mailto:hello@thaimeo.info">
+      <a href="mailto:hongthaiphi@gmail.com">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
         Liên hệ
       </a>
     </nav>
   </main>
+
+  <script>
+    const h1 = document.querySelector('h1');
+    const chars = [...h1.textContent];
+    h1.innerHTML = chars.map((c, i) =>
+      c === ' '
+        ? '<span class="space"> </span>'
+        : `<span class="letter" style="animation-delay:${i * 55}ms">${c}</span>`
+    ).join('');
+
+    h1.addEventListener('mouseenter', () => {
+      h1.querySelectorAll('.letter').forEach((el, i) => {
+        el.style.animationDelay = `${i * 40}ms`;
+      });
+    });
+  </script>
 </body>
 </html>
