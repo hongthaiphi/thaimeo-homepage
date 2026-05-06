@@ -4,14 +4,39 @@
   padding: 0;
 }
 
+/* ── Themes ── */
+:root {
+  --bg:           #f0f0f0;
+  --text:         #111;
+  --text-muted:   #888;
+  --surface:      #fff;
+  --border:       #ddd;
+  --border-hover: #bbb;
+  --surface-hover:#f8f8f8;
+  --badge-color:  #444;
+}
+
+[data-theme="dark"] {
+  --bg:           #0f0f0f;
+  --text:         #f0f0f0;
+  --text-muted:   #777;
+  --surface:      #1a1a1a;
+  --border:       #2e2e2e;
+  --border-hover: #555;
+  --surface-hover:#222;
+  --badge-color:  #aaa;
+}
+
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: #f0f0f0;
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
 }
 
 main {
@@ -23,7 +48,7 @@ main {
   text-align: center;
 }
 
-/* Header */
+/* ── Header ── */
 header {
   position: fixed;
   top: 24px;
@@ -32,30 +57,70 @@ header {
   display: flex;
   justify-content: center;
   z-index: 10;
+  pointer-events: none;
 }
 
-/* Badge */
+header > * {
+  pointer-events: auto;
+}
+
+/* ── Badge ── */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: 0.875rem;
-  color: #444;
-  background: #fff;
-  border: 1px solid #ddd;
+  color: var(--badge-color);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 999px;
   padding: 6px 16px;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
 
-/* Name */
+/* ── Theme toggle ── */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, transform 0.15s;
+  z-index: 10;
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-hover);
+  transform: scale(1.08);
+}
+
+.theme-toggle svg {
+  color: var(--badge-color);
+  transition: color 0.3s;
+}
+
+.icon-sun  { display: none; }
+.icon-moon { display: block; }
+[data-theme="dark"] .icon-sun  { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
+
+/* ── Name ── */
 h1 {
   font-size: clamp(3.5rem, 12vw, 7rem);
   font-weight: 300;
-  color: #111;
+  color: var(--text);
   letter-spacing: -0.03em;
   line-height: 1;
   text-transform: uppercase;
   cursor: default;
+  transition: color 0.3s;
 }
 
 h1 .letter {
@@ -73,14 +138,8 @@ h1:hover .letter {
 }
 
 @keyframes letterIn {
-  from {
-    opacity: 0;
-    transform: translateY(50px) scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  from { opacity: 0; transform: translateY(50px) scale(0.8); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes wave {
@@ -89,15 +148,16 @@ h1:hover .letter {
   60%       { transform: translateY(-6px); }
 }
 
-/* Tagline */
+/* ── Tagline ── */
 .tagline {
   font-size: 1.125rem;
-  color: #888;
+  color: var(--text-muted);
   font-weight: 400;
   max-width: 420px;
+  transition: color 0.3s;
 }
 
-/* Nav buttons */
+/* ── Nav buttons ── */
 nav {
   display: flex;
   gap: 12px;
@@ -112,17 +172,17 @@ nav a {
   gap: 8px;
   font-size: 0.9375rem;
   font-weight: 500;
-  color: #222;
-  background: #fff;
-  border: 1px solid #ddd;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 14px;
   padding: 12px 24px;
   text-decoration: none;
-  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s, color 0.3s;
 }
 
 nav a:hover {
-  background: #f8f8f8;
-  border-color: #bbb;
+  background: var(--surface-hover);
+  border-color: var(--border-hover);
   transform: translateY(-1px);
 }
